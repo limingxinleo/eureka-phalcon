@@ -19,3 +19,18 @@
 - [Phalcon基础开发框架](https://github.com/limingxinleo/basic-phalcon)
 - [Zipkin开发版本](https://github.com/limingxinleo/zipkin-phalcon)
 
+### 使用说明
+
+安装
+~~~
+docker pull logimethods/eureka
+~~~
+
+启动
+~~~
+docker run --name erueka -p 5000:5000 -e FLASK_DEBUG=1 logimethods/eureka
+~~~
+
+测试
+~~~
+~~~
