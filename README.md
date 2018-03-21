@@ -23,12 +23,12 @@
 
 安装
 ~~~
-docker pull logimethods/eureka
+docker pull limingxinleo/docker-eureka
 ~~~
 
 启动
 ~~~
-docker run --name erueka -p 5000:5000 -e FLASK_DEBUG=1 logimethods/eureka
+docker run --name eureka -p 8080:8080 -d limingxinleo/docker-eureka
 ~~~
 
 测试
