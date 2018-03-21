@@ -1,35 +1,23 @@
 <instance>
-    <instanceId>127.0.0.1:8888</instanceId>
-    <hostName>127.0.0.1</hostName>
-    <port enabled="true">8888</port>
+    <hostName>{{APP_URL}}</hostName>
+    <port enabled="true">80</port>
     <securePort enabled="false">443</securePort>
-    <app>PYTHON-MS</app>
-    <ipAddr>127.0.0.1</ipAddr>
+    <app>{{APP_NAME}}</app>
+    <ipAddr>{{APP_URL}}</ipAddr>
     <status>UP</status>
-    <overriddenstatus>UNKNOWN</overriddenstatus>
     <countryId>1</countryId>
     <dataCenterInfo class="com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo">
         <name>MyOwn</name>
     </dataCenterInfo>
-    <leaseInfo>
-        <renewalIntervalInSecs>30</renewalIntervalInSecs>
-        <durationInSecs>90</durationInSecs>
-        <registrationTimestamp>${current_time}</registrationTimestamp>
-        <lastRenewalTimestamp>${current_time}</lastRenewalTimestamp>
-        <evictionTimestamp>0</evictionTimestamp>
-        <serviceUpTimestamp>${current_time}</serviceUpTimestamp>
-    </leaseInfo>
     <metadata>
         <management.port>18128</management.port>
         <jmx.port>57670</jmx.port>
     </metadata>
-    <homePageUrl>http://127.0.0.1:8127/</homePageUrl>
-    <statusPageUrl>http://127.0.0.1:18127/info</statusPageUrl>
-    <healthCheckUrl>http://127.0.0.1:18127/health</healthCheckUrl>
-    <vipAddress>python-ms</vipAddress>
-    <secureVipAddress>python-ms</secureVipAddress>
+    <homePageUrl>http://{{APP_URL}}/</homePageUrl>
+    <statusPageUrl>http://{{APP_URL}}/status</statusPageUrl>
+    <healthCheckUrl>http://{{APP_URL}}/health</healthCheckUrl>
+    <vipAddress>{{APP_NAME}}</vipAddress>
+    <secureVipAddress>{{APP_NAME}}</secureVipAddress>
     <isCoordinatingDiscoveryServer>false</isCoordinatingDiscoveryServer>
-    <lastUpdatedTimestamp>${current_time}</lastUpdatedTimestamp>
-    <lastDirtyTimestamp>${current_time}</lastDirtyTimestamp>
     <actionType>ADDED</actionType>
 </instance>

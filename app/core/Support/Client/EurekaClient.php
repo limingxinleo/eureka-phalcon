@@ -11,6 +11,7 @@ namespace App\Core\Support\Client;
 use App\Common\Enums\ErrorCode;
 use App\Common\Exceptions\BizException;
 use GuzzleHttp\Client;
+use limx\Support\Str;
 use Xin\Traits\Common\InstanceTrait;
 use Psr\Http\Message\ResponseInterface;
 
@@ -49,6 +50,18 @@ class EurekaClient
         return $xml;
     }
 
+    protected function getInstanceXml()
+    {
+        $path = di('config')->application->configDir;
+        $xml = file_get_contents($path . 'eureka/instance.xml');
+        $url = env('APP_URL');
+        $appName = $this->config->appName;
+
+        $xml = str_replace('{{APP_NAME}}', $appName, $xml);
+        $xml = str_replace('{{APP_URL}}', $url, $xml);
+        return $xml;
+    }
+
     public function apps()
     {
         $route = '/eureka/v2/apps';
@@ -58,10 +71,9 @@ class EurekaClient
 
     public function register()
     {
-        $route = '/eureka/v2/apps/' . $this->config->instance;
-        $xml = file_get_contents(APP_PATH . '/config/eureka/instance.xml');
+        $route = '/eureka/v2/apps/' . $this->config->appName;
         $response = $this->client->post($route, [
-            'body' => $xml
+            'body' => $this->getInstanceXml()
         ]);
 
         return $this->handleResponse($response);

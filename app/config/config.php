@@ -317,7 +317,7 @@ return new Config(
         */
         'eureka' => [
             'baseUri' => env('EUREKA_BASE_URI'),
-            'instance' => env('APP_NAME', 'phalcon'),
+            'appName' => env('APP_NAME', 'phalcon'),
         ],
     ]
 );

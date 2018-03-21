@@ -31,6 +31,10 @@ docker pull limingxinleo/docker-eureka:1.1.147
 docker run --name eureka -p 8081:8080 -d limingxinleo/docker-eureka:1.1.147
 ~~~
 
-测试
+配置
 ~~~
+# .env文件
+APP_NAME
+APP_URL
+EUREKA_BASE_URI
 ~~~
