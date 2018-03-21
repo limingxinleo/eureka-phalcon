@@ -23,12 +23,12 @@
 
 安装
 ~~~
-docker pull limingxinleo/docker-eureka
+docker pull limingxinleo/docker-eureka:1.1.147
 ~~~
 
 启动
 ~~~
-docker run --name eureka -p 8081:8080 -d limingxinleo/docker-eureka
+docker run --name eureka -p 8081:8080 -d limingxinleo/docker-eureka:1.1.147
 ~~~
 
 测试

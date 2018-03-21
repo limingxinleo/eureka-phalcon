@@ -23,8 +23,8 @@ class EurekaClient
     protected $config;
 
     protected $headers = [
-        'Content-Type' => 'application/json',
-        'Accept' => 'application/json'
+        'Accept' => 'application/json',
+        'Content-Type' => 'application/xml'
     ];
 
     public function __construct()
@@ -38,42 +38,30 @@ class EurekaClient
 
         $this->client = new Client([
             'base_uri' => $baseUri,
+            'headers' => $this->headers
         ]);
     }
 
     protected function handleResponse(ResponseInterface $response)
     {
         $str = $response->getBody()->getContents();
-        return $str;
-        $xml = simplexml_load_string($str);
+        $xml = json_decode($str, true);
         return $xml;
     }
 
     public function apps()
     {
         $route = '/eureka/v2/apps';
-        $response = $this->client->get($route, [
-            'headers' => $this->headers
-        ]);
+        $response = $this->client->get($route);
         return $this->handleResponse($response);
     }
 
     public function register()
     {
         $route = '/eureka/v2/apps/' . $this->config->instance;
+        $xml = file_get_contents(APP_PATH . '/config/eureka/instance.xml');
         $response = $this->client->post($route, [
-            'json' => [
-                'instance' => [
-                    'hostName' => '127.0.0.1',
-                    'app' => 'xxx',
-                    'vipAddress' => 'xxx',
-                    'secureVipAddress' => 'xxx',
-                    'ipAddr' => 'ss',
-                    'status' => 'UP',
-                    'port' => '80',
-                    'securePort' => '443',
-                ],
-            ],
+            'body' => $xml
         ]);
 
         return $this->handleResponse($response);
