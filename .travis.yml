@@ -1,7 +1,7 @@
 language: php
 
 dist: trusty
-sudo: false
+sudo: required
 
 addons:
   hosts:
@@ -25,6 +25,7 @@ git:
 services:
   - redis-server
   - mongodb
+  - docker
 
 before_install:
   - export PHP_MAJOR="$(`phpenv which php` -r 'echo phpversion();' | cut -d '.' -f 1)"
@@ -47,6 +48,9 @@ install:
   - phpenv config-add $TRAVIS_BUILD_DIR/tests/_ci/phalcon.ini
   # We use this file as our custom PHP config
   - phpenv config-add $TRAVIS_BUILD_DIR/tests/_ci/ci.ini
+  # 安装Eureka
+  - docker pull limingxinleo/docker-eureka:1.1.147
+  - docker run --name eureka -p 8081:8080 -d limingxinleo/docker-eureka:1.1.147
   # 安装项目
   - composer self-update
   - cd $TRAVIS_BUILD_DIR
@@ -60,6 +64,7 @@ before_script:
   - php run server:service --daemonize
   - php -S localhost:8080 -t public &> /dev/null &
   - php run queue &> /dev/null &
+  - sleep 30
 
 script:
   - cd $TRAVIS_BUILD_DIR

@@ -2,7 +2,7 @@
 
 > 本项目以[limingxinleo/phalcon-project](https://github.com/limingxinleo/phalcon)为基础，进行简易封装。
 
-[![Build Status](https://travis-ci.org/limingxinleo/phalcon-unit-test.svg?branch=master)](https://travis-ci.org/limingxinleo/phalcon-unit-test)
+[![Build Status](https://travis-ci.org/limingxinleo/eureka-phalcon.svg?branch=master)](https://travis-ci.org/limingxinleo/eureka-phalcon)
 [![Total Downloads](https://poser.pugx.org/limingxinleo/phalcon-project/downloads)](https://packagist.org/packages/limingxinleo/phalcon-project)
 [![Latest Stable Version](https://poser.pugx.org/limingxinleo/phalcon-project/v/stable)](https://packagist.org/packages/limingxinleo/phalcon-project)
 [![Latest Unstable Version](https://poser.pugx.org/limingxinleo/phalcon-project/v/unstable)](https://packagist.org/packages/limingxinleo/phalcon-project)
@@ -34,7 +34,7 @@ docker run --name eureka -p 8081:8080 -d limingxinleo/docker-eureka:1.1.147
 配置
 ~~~
 # .env文件
-APP_NAME
-APP_URL
-EUREKA_BASE_URI
+APP_NAME=phalcon  # 服务名
+APP_URL=eureka.phalcon.xin  # 服务接口调用地址
+EUREKA_BASE_URI=http://127.0.0.1:8081/  # Eureka地址
 ~~~
