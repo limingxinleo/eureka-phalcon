@@ -1,4 +1,5 @@
 <instance>
+    <instanceId>{{APP_URL}}</instanceId>
     <hostName>{{APP_URL}}</hostName>
     <port enabled="true">80</port>
     <securePort enabled="false">443</securePort>

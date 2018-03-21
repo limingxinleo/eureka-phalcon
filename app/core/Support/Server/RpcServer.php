@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 namespace App\Core\Support\Server;
 
-use App\Utils\Log;
+use App\Core\Support\Client\EurekaClient;
 use Xin\Swoole\Rpc\Server;
 use swoole_server;
 use swoole_process;
@@ -17,10 +17,14 @@ class RpcServer extends Server
 {
     public function beforeServerStart(swoole_server $server)
     {
+        // 注册服务到Eureka
+        EurekaClient::getInstance()->register();
+
+        // 用于续约
         $process = new swoole_process(function (swoole_process $worker) use ($server) {
             while (true) {
-                sleep(1);
-                echo "xx" . PHP_EOL;
+                sleep(30);
+                EurekaClient::getInstance()->heartbeat();
             }
         });
 

@@ -11,7 +11,8 @@ class TestTask extends Task
     {
         $client = EurekaClient::getInstance();
 
-        dd($client->register());
+        // dd($client->app('phalcon'));
+        dd($client->apps());
     }
 
 }
