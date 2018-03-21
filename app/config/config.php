@@ -307,5 +307,17 @@ return new Config(
             'port' => env('RPC_PORT', 11521),
             'daemonize' => env('RPC_DAEMONIZE', false),
         ],
+
+        /*
+        |--------------------------------------------------------------------------
+        | Eureka配置
+        |--------------------------------------------------------------------------
+        |
+        |
+        */
+        'eureka' => [
+            'baseUri' => env('EUREKA_BASE_URI'),
+            'instance' => env('APP_NAME', 'phalcon'),
+        ],
     ]
 );

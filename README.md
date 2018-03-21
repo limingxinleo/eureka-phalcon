@@ -28,7 +28,7 @@ docker pull limingxinleo/docker-eureka
 
 启动
 ~~~
-docker run --name eureka -p 8080:8080 -d limingxinleo/docker-eureka
+docker run --name eureka -p 8081:8080 -d limingxinleo/docker-eureka
 ~~~
 
 测试
