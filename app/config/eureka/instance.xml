@@ -1,7 +1,7 @@
 <instance>
     <instanceId>{{APP_URL}}</instanceId>
     <hostName>{{APP_URL}}</hostName>
-    <port enabled="true">80</port>
+    <port enabled="true">{{APP_PORT}}</port>
     <securePort enabled="false">443</securePort>
     <app>{{APP_NAME}}</app>
     <ipAddr>{{APP_URL}}</ipAddr>

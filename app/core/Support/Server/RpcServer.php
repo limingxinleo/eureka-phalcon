@@ -25,6 +25,7 @@ class RpcServer extends Server
             while (true) {
                 sleep(30);
                 EurekaClient::getInstance()->heartbeat();
+                EurekaClient::getInstance()->cacheServices();
             }
         });
 

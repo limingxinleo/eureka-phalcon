@@ -64,7 +64,7 @@ before_script:
   - php run server:service --daemonize
   - php -S localhost:8080 -t public &> /dev/null &
   - php run queue &> /dev/null &
-  - sleep 30
+  - sleep 60
 
 script:
   - cd $TRAVIS_BUILD_DIR

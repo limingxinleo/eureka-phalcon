@@ -9,16 +9,32 @@
 namespace Tests\Units;
 
 use App\Core\Support\Client\EurekaClient;
+use GuzzleHttp\Client;
+use Tests\HttpTestCase;
 use Tests\UnitTestCase;
 
 /**
  * Class UnitTest
  */
-class EurekaTest extends UnitTestCase
+class EurekaTest extends HttpTestCase
 {
     public function testBaseCase()
     {
         $apps = EurekaClient::getInstance()->apps();
         $this->assertTrue(isset($apps['applications']['application']));
+    }
+
+    public function testPhalconService()
+    {
+        $client = EurekaClient::getInstance();
+        $baseUri = $client->getBaseUriByServiceName('phalcon');
+
+        $httpClient = new Client([
+            'base_uri' => $baseUri
+        ]);
+        $res = $httpClient->post('/');
+        $json = json_decode($res->getBody()->getContents(), true);
+
+        $this->assertTrue($json['success']);
     }
 }

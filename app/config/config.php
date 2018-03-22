@@ -318,6 +318,7 @@ return new Config(
         'eureka' => [
             'baseUri' => env('EUREKA_BASE_URI'),
             'appName' => env('APP_NAME', 'phalcon'),
+            'cacheKeyPrefix' => 'eureka:service:%s',
         ],
     ]
 );
