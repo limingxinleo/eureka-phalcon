@@ -7,11 +7,28 @@
 ### Added
 
 ### Changed
-* 修改目录结构
 
 ### Fixed
 
 ### Deleted
+
+## [2.3.0]
+### Checked
+- [x] php单元测试
+
+### Added
+
+### Changed
+* 修改目录结构
+* 修改RedisUtil@incr & incrBy 增加超时时间的方法
+* 消息队列模块使用独立x-swoole-queue模块
+
+### Fixed
+* 修改SQL日志记录有误的BUG
+
+### Deleted
+* 删除App\Utils\Redis\Commands
+* 删除JobInterface
 
 ## [2.2.10]
 ### Checked
